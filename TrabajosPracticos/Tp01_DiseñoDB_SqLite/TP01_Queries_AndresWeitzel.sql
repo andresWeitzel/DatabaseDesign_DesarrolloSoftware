@@ -1,5 +1,5 @@
 /* ----------------------------
- * -- TP02 DISEÑO DB SQLITE---
+ * -- TP01 DISEÑO DB SQLITE---
  * ----------------------------
  * 
  * 
@@ -63,4 +63,101 @@ select * from Productos where producto_precio < 3.00;
 -- <= Menor Igual que..
  
 
+-- ¿¿6) Listar los nombre de producto y precio del proveedor 
+-- DLL01 y de precio menor a 4???
+
+-- Enunciado mal redactado..
+
+-- 6) Listar nombre y precio del producto cuyo id de proveedor
+-- sea DLL01 y el precio del producto menor a 7.
+
+SELECT * FROM sqlite_master WHERE type = "table";
+select * from Proveedores;
+select * from Productos;
+
+
+select producto_nombre,producto_precio from Productos
+where proveedor_ID = 'DLL01' and producto_precio < 4;
+
+
+
+
+
+-- 7) Listar los nombre de producto y precio de los 
+-- proveedores BRS01 y FNG01.
+
+SELECT * FROM sqlite_master WHERE type = "table";
+select * from Proveedores;
+select * from Productos;
+
+
+select producto_nombre,producto_precio from Productos
+where proveedor_ID = 'DLL01' or proveedor_ID = 'FNG01';
+
+
+-- 8) Listar los nombres de productos con un precio 
+-- entre 4 y 10.
+
+SELECT * FROM sqlite_master WHERE type = "table";
+select * from Productos;
+
+
+select producto_nombre from Productos
+where producto_precio >= 4 and producto_precio <= 10;
+
+
+
+
+--9) Investigar con la bibliografía recomendada o 
+-- en internet las sentencias IN y BETWEEN.
+
+-- Rescribir el comando de la respuesta 7) utilizando 
+-- la sentencia IN.
+
+SELECT * FROM sqlite_master WHERE type = "table";
+select * from Productos;
+
+
+select producto_nombre,producto_precio from Productos
+where proveedor_ID in ('DLL01','FNG01');
+
+
+-- Rescribir el comando de la respuesta 8) utilizando
+-- la sentencia BETWEEN.
+
+select producto_nombre from Productos
+where producto_precio BETWEEN 4 and 10;
+
+
+-- 10) Listar el nombre y precio de todos los productos
+-- de peluche
+
+SELECT * FROM sqlite_master WHERE type = "table";
+select * from Productos;
+
+
+select producto_nombre, producto_precio from Productos
+where producto_nombre like '%peluche%'
+
+
 */
+
+-- 11) Listar el nombre y precio de todos los osos de 
+-- la tabla de productos.
+
+SELECT * FROM sqlite_master WHERE type = "table";
+select * from Productos;
+
+
+select producto_nombre, producto_precio from Productos
+where producto_nombre like '%oso%'
+
+
+
+
+
+
+
+
+
+
