@@ -3,7 +3,7 @@
 Material de Diseño de Base de Datos en SQLite Carrera Desarrollo de Software
 
 * Cada TP está en su correspondiente Directorio junto con el Material.
-* Todo TP que se implemente de forma práctica una db se anexa como script.
+* Todo TP que implemente de forma práctica una db se anexa como script.
 * Si se desea descargar un TP puntual se deberá abrir independientemente, ya que esto es un repositorio, la descarga es Genérica
 
 
