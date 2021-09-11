@@ -6,7 +6,7 @@
  * ========= QUERIES =============
  */
 
-/*
+
 -- Tablas
 SELECT * FROM sqlite_master WHERE type = "table";
 
@@ -66,7 +66,7 @@ select * from Productos where producto_precio < 3.00;
 -- ¿¿6) Listar los nombre de producto y precio del proveedor 
 -- DLL01 y de precio menor a 4???
 
--- Enunciado mal redactado..
+-- Inciso poco entendible..
 
 -- 6) Listar nombre y precio del producto cuyo id de proveedor
 -- sea DLL01 y el precio del producto menor a 7.
@@ -137,10 +137,9 @@ select * from Productos;
 
 
 select producto_nombre, producto_precio from Productos
-where producto_nombre like '%peluche%'
+where producto_nombre like '%peluche%';
 
 
-*/
 
 -- 11) Listar el nombre y precio de todos los osos de 
 -- la tabla de productos.
@@ -150,14 +149,97 @@ select * from Productos;
 
 
 select producto_nombre, producto_precio from Productos
-where producto_nombre like '%oso%'
+where producto_nombre like '%oso%';
+
+
+
+-- 12)Ahora nos solicitan hacer una lista de precios de 
+-- los productos con el precio por menor y por mayor. 
+-- El precio por menor es el cargado en la base de datos, 
+-- y el precio por mayor tiene un descuento del 10%. Listar
+-- todos los productos con su nombre, precio por menor y precio por 
+-- mayor, nombrar el campo precio por menor: precio_menor y el precio
+-- por mayor: precio_mayor.
+
+SELECT * FROM sqlite_master WHERE type = "table";
+select * from Productos;
+
+
+select *
+, producto_precio as precio_por_menor
+, (producto_precio - (producto_precio * 10)/100) as precio_por_mayor 
+from Productos;
+
+
+-- 13) Ahora nos solicitan realizar la misma lista, pero el precio
+ -- de la base de datos es el precio por mayor,y el precio por menor es un 25% mayor.
+
+SELECT * FROM sqlite_master WHERE type = "table";
+select * from Productos;
+
+
+select *
+, producto_precio as precio_por_mayor
+, (producto_precio + (producto_precio * 25)/100) as precio_por_menor 
+from Productos;
+
+
+-- 14) 
+-- max() --> Valor Máximo
+-- min() --> Valor Mínimo
+-- count() --> Cantidad de Valores
+-- sum() --> Suma de Valores
+-- avg() --> Promedio de Valores
+
+
+
+-- 15) Contar la cantidad de ítems pedidos de la orden de compra 
+-- nro. 20005. Para esto van a tener que buscar en la tabla Orden_Items 
+-- y sumar todos los campos cantidad de la orden de compra 20005 
+-- (van a tener que combinar el comando SELECT con WHERE).
+
+-- sumar todos los campos cantidad?? Poco entendible este inciso, anexo 2 respuestas...
+
+SELECT * FROM sqlite_master WHERE type = "table";
+select * from Orden_Items;
+
+
+
+-- 15) Cantidad de Registros cuyo numero de orden sea el 20005    
+
+select count(cantidad) as cantidad_registros from Orden_Items where orden_numero=20005;
+
+
+-- 15) Cantidad de Ordenes cuyo numero de orden sea el 20005    
+
+select sum(cantidad) as cantidad_ordenes from Orden_Items where orden_numero=20005;
 
 
 
 
+-- 16) Calcular el precio total de la orden de compra Nro. 20005. Recordar que para 
+-- calcular el precio total van a tener que hacer la suma de todos los productos de 
+-- cantidad por Item_Precio .
+
+SELECT * FROM sqlite_master WHERE type = "table";
+select * from Orden_Items;
+
+
+select * , (cantidad * item_precio) as precio_total_item   
+from Orden_Items where orden_numero = 20005;
 
 
 
+select orden_numero, sum(cantidad * item_precio) as precio_total_numero_orden   
+from Orden_Items 
+where orden_numero = 20005;
 
 
 
+-- 17) Calcular la cantidad total a pedir (entre todas las órdenes de compra) 
+-- del producto BNBG01.
+
+SELECT * FROM sqlite_master WHERE type = "table";
+select * from Orden_Items;
+
+select producto_ID, sum(cantidad) from Orden_Items where producto_ID = 'BNBG01';
